@@ -1,0 +1,13 @@
+label {
+  width: 20px;
+}
+
+input {
+  width: 6rem;
+  height: 1rem;
+}
+
+form {
+  margin: 0 auto;
+  text-align: center;
+}
