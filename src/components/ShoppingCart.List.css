@@ -1,0 +1,17 @@
+table {
+  position: relative;
+  text-align: center;
+  margin: auto;
+  width: 35%;
+  line-height: 1.5em;
+  justify-content: start;
+  border: solid #c7c8c6;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  text-align: left;
+  border: solid #c7c8c6 1px;
+  padding: 2px 10px;
+}

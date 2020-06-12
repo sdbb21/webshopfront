@@ -4,7 +4,7 @@ import { NavLink, Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";
 import UserPage from "./pages/UserPage";
-// import OrderPage from "./pages/OrderPage";
+import OrderPage from "./pages/OrderPage";
 
 function App() {
   return (
@@ -27,8 +27,12 @@ function App() {
         {/* <Route exact path="/" component={HomePage} />
         <Route path="/order" component={OrderPage} /> */}
         <Route path="/signup" component={AuthPage} />
+
         <Route path="/login" component={UserPage} />
         <Route exact path="/" component={HomePage} />
+
+        <Route path="/order" component={OrderPage} />
+
       </Switch>
     </div>
   );

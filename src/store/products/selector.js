@@ -1,3 +1,4 @@
+
 export const selectFeedLoading = (reduxState) => {
   return reduxState.products.loading;
 };
@@ -5,3 +6,4 @@ export const selectFeedLoading = (reduxState) => {
 export const selectFeedProducts = (reduxState) => {
   return reduxState.products.products;
 };
+

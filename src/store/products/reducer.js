@@ -1,5 +1,7 @@
 const initialState = {
+
   loading: false,
+
   products: [
     {
       id: 1,
@@ -27,6 +29,7 @@ const initialState = {
     },
   ],
 };
+
 
 export default function productsReducer(state = initialState, action) {
   switch (action.type) {
