@@ -24,15 +24,13 @@ export default function Backoffice() {
             <li>
               {" "}
               <div>
-                <p>
-                  {`${order.id} amount of products orderd:${order.products.length}`}{" "}
-                  <ul>
-                    {" "}
-                    {order.products.map((products) => (
-                      <li>{products.name}</li>
-                    ))}
-                  </ul>
-                </p>
+                {`${order.id} amount of products orderd:${order.products.length}`}{" "}
+                <ul>
+                  {" "}
+                  {order.products.map((products) => (
+                    <li>{products.name}</li>
+                  ))}
+                </ul>
                 <p>{order.userId}</p>
               </div>{" "}
             </li>

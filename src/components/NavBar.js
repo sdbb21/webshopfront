@@ -11,6 +11,7 @@ export default function NavBar() {
   return (
     <div>
       {" "}
+      {/* //hey people ! */}
       <nav className="navbar">
         <NavLink className="NavLink" to="/">
           Webshop
