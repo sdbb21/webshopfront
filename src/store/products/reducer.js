@@ -1,4 +1,7 @@
 const initialState = {
+
+  loading: false,
+
   products: [
     {
       id: 1,
@@ -27,9 +30,23 @@ const initialState = {
   ],
 };
 
-export default (state = initialState, { type, payload }) => {
-  switch (type) {
-    default:
+
+export default function productsReducer(state = initialState, action) {
+  switch (action.type) {
+    case "products/Loading": {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case "products/Fetched": {
+      return {
+        loading: false,
+        posts: [...state.posts, ...action.payload],
+      };
+    }
+    default: {
       return state;
+    }
   }
-};
+}

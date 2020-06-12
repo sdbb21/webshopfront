@@ -27,8 +27,12 @@ function App() {
         {/* <Route exact path="/" component={HomePage} />
         <Route path="/order" component={OrderPage} /> */}
         <Route path="/signup" component={AuthPage} />
-        <Route path="/order" component={OrderPage} />
+
         <Route path="/login" component={UserPage} />
+        <Route exact path="/" component={HomePage} />
+
+        <Route path="/order" component={OrderPage} />
+
       </Switch>
     </div>
   );
