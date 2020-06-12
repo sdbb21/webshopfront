@@ -1,3 +1,7 @@
+.pageWrapper {
+  text-align: center;
+}
+
 table {
   position: relative;
   text-align: center;
@@ -14,4 +18,9 @@ th {
   text-align: left;
   border: solid #c7c8c6 1px;
   padding: 2px 10px;
+}
+
+button {
+  margin: 20px;
+  padding: 20px;
 }
