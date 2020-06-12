@@ -6,6 +6,7 @@ import { fetchOrder } from "../store/orders/actions";
 import { useParams } from "react-router-dom";
 import ShoppingCartList from "../components/ShoppingCartList";
 import "../components/ShoppingCart.List.css";
+import { checkout } from "../store/orders/actions";
 
 export default function OrderPage() {
   const [products, set_products] = useState();
@@ -39,6 +40,7 @@ export default function OrderPage() {
             return (
               <tr key={i}>
                 <ShoppingCartList
+                  id={product.id}
                   name={product.name}
                   description={product.description}
                   price={product.price}
@@ -51,12 +53,14 @@ export default function OrderPage() {
     );
   }
 
-  function confirmPurchaseHandler() {}
+  function confirmPurchaseHandler() {
+    dispatch(checkout());
+  }
 
   useEffect(() => {
     set_loading("Loading");
     getProductDetails();
-  }, []);
+  }, [order]);
 
   if (loading === "loading" || loading === "Idle")
     return <h1>Your cart is empty</h1>;
@@ -64,7 +68,7 @@ export default function OrderPage() {
     <div className="pageWrapper">
       <h1>Your shopping cart</h1>
       {shoppingCartListRender()}
-      <button>Confirm purchase</button>
+      <button onClick={confirmPurchaseHandler}>Confirm purchase</button>
     </div>
   );
 }

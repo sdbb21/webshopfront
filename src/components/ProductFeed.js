@@ -17,13 +17,19 @@ export default function ProductFeed() {
     dispatch(fetchNext5Products());
   }, [dispatch]);
 
+  const add = (id) => {
+    dispatch({ type: "ADD_PRODUCT", payload: id });
+  };
+
   return (
     <div>
       {product.map((product) => {
         return (
           <div key={product.id}>
             <h3>
-              <Link to={`/product/${product.id}`}>{product.name}</Link>
+              {/* <Link to={`/product/${product.id}`}> */}
+              <p onClick={(e) => add(product.id)}> {product.name} 😍</p>
+              {/* </Link> */}
             </h3>
           </div>
         );
