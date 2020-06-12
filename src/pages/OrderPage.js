@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectOrder } from "../store/orders/selector";
-import { selectAllProducts } from "../store/products/selector";
+import { selectFeedProducts } from "../store/products/selector";
 import { fetchOrder } from "../store/orders/actions";
 import { useParams } from "react-router-dom";
 import ShoppingCartList from "../components/ShoppingCartList";
@@ -11,7 +11,7 @@ export default function OrderPage() {
   const [products, set_products] = useState();
   const [loading, set_loading] = useState("Idle");
   const order = useSelector(selectOrder);
-  const allProducts = useSelector(selectAllProducts);
+  const allProducts = useSelector(selectFeedProducts);
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -21,7 +21,7 @@ export default function OrderPage() {
 
   function getProductDetails() {
     const productDetails = order.productIds.map((cartProductId) => {
-      return allProducts.products.find((allProducts) => {
+      return allProducts.find((allProducts) => {
         return parseInt(allProducts.id) === parseInt(cartProductId);
       });
     });
