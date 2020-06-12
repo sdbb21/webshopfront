@@ -1,7 +1,7 @@
 const initialState = {
-  orderId: null,
-  userId: null,
-  productIds: [],
+  orderId: 1,
+  userId: 1,
+  productIds: [1, 3],
 };
 
 export default (state = initialState, { type, payload }) => {

@@ -1,10 +1,30 @@
 const initialState = {
-  id: null,
-  name: null,
-  description: null,
-  price: null,
-  imageUrl: null,
-  categoryId: null,
+  products: [
+    {
+      id: 1,
+      name: "item_1",
+      description: "description_1",
+      price: 43,
+      imageUrl: "image_Url_1",
+      categoryId: 1,
+    },
+    {
+      id: 2,
+      name: "item_2",
+      description: "description_2",
+      price: 23,
+      imageUrl: "image_Url_2",
+      categoryId: 2,
+    },
+    {
+      id: 3,
+      name: "item_3",
+      description: "description_3",
+      price: 44,
+      imageUrl: "image_Url_3",
+      categoryId: 1,
+    },
+  ],
 };
 
 export default (state = initialState, { type, payload }) => {

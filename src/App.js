@@ -1,22 +1,34 @@
 import React from "react";
 import "./App.css";
-import { Switch, Route } from "react-router-dom";
+import { NavLink, Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";
-import OrderPage from "./pages/OrderPage";
-import ProductDetailsPage from "./pages/ProductDetailsPage";
 import UserPage from "./pages/UserPage";
-import NavBar from "./components/NavBar";
+import OrderPage from "./pages/OrderPage";
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
+      <nav className="navbar">
+        <NavLink className="NavLink" to="/">
+          Webshop
+        </NavLink>
+        <NavLink className="NavLink" to="/signup">
+          Sign up
+        </NavLink>
+        <NavLink className="NavLink" to="/login">
+          Log in
+        </NavLink>
+        <NavLink className="NavLink" to="/order">
+          Order Page
+        </NavLink>
+      </nav>
       <Switch>
-        {/* more pages to be added here later */}
-        {/* <Route path="/login" component={AuthPage} /> */}
-        <Route path="/order/cart" component={OrderPage} />
-        {/* <Route path="/" component={HomePage} /> */}
+        {/* <Route exact path="/" component={HomePage} />
+        <Route path="/order" component={OrderPage} /> */}
+        <Route path="/signup" component={AuthPage} />
+        <Route path="/order" component={OrderPage} />
+        <Route path="/login" component={UserPage} />
       </Switch>
     </div>
   );
