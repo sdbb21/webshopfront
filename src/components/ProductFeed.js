@@ -14,9 +14,9 @@ export default function ProductFeed() {
   const loading = useSelector(selectFeedLoading);
   const product = useSelector(selectFeedProducts);
 
-  //   useEffect(() => {
-  //     dispatch(fetchNext5Products);
-  //   }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchNext5Products);
+  }, [dispatch]);
 
   return (
     <div>
