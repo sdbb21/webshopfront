@@ -1,5 +1,4 @@
 const initialState = {
-
   loading: false,
 
   products: [
@@ -30,7 +29,6 @@ const initialState = {
   ],
 };
 
-
 export default function productsReducer(state = initialState, action) {
   switch (action.type) {
     case "products/Loading": {
@@ -42,7 +40,7 @@ export default function productsReducer(state = initialState, action) {
     case "products/Fetched": {
       return {
         loading: false,
-        posts: [...state.posts, ...action.payload],
+        products: [...state.products, ...action.payload],
       };
     }
     default: {

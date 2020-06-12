@@ -15,10 +15,6 @@ export default function OrderPage() {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  //   console.log("What are my products", allProducts.products);
-  //   console.log("is my order.id true", !!order.orderId);
-  //   console.log("What are my products", allProducts);
-
   function getProductDetails() {
     const productDetails = order.productIds.map((cartProductId) => {
       return allProducts.find((allProducts) => {
@@ -54,17 +50,21 @@ export default function OrderPage() {
       </table>
     );
   }
+
+  function confirmPurchaseHandler() {}
+
   useEffect(() => {
     set_loading("Loading");
     getProductDetails();
   }, []);
-  console.log("loading status", loading);
+
   if (loading === "loading" || loading === "Idle")
     return <h1>Your cart is empty</h1>;
   return (
-    <div>
+    <div className="pageWrapper">
       <h1>Your shopping cart</h1>
       {shoppingCartListRender()}
+      <button>Confirm purchase</button>
     </div>
   );
 }

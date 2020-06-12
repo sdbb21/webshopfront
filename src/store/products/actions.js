@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = `http://localhost:5000/`;
+const API_URL = `http://localhost:5001`;
 
 export function startLoading() {
   return {
@@ -15,12 +15,18 @@ export function productsFetched(moreProducts) {
   };
 }
 
-export async function fetchNext5Products(dispatch, getState) {
-  dispatch(startLoading());
+export function fetchNext5Products() {
+  return async function thunk(dispatch, getState) {
+    dispatch(startLoading());
+    try {
+      console.log("hey hey");
+      const res = await axios.get(`${API_URL}/products`);
+      const moreProducts = res.data;
+      console.log("What is my res", res.data);
 
-  const res = await axios.get(`${API_URL}/products`);
-
-  const moreProducts = res.data.rows;
-
-  dispatch(productsFetched(moreProducts));
+      dispatch(productsFetched(moreProducts));
+    } catch (e) {
+      console.log(e);
+    }
+  };
 }
