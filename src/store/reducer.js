@@ -3,6 +3,7 @@ import auth from "./auth/reducer";
 import orders from "./orders/reducer";
 import products from "./products/reducer";
 import user from "./user/reducer";
+
 const reducer = combineReducers({
   auth: auth,
   orders: orders,

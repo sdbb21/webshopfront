@@ -1,15 +1,16 @@
-const initialState = {
+
+  userId: null,
+  firstName: null,
+  lastName: null,
+  email: null,
+  address: null,
   jwt: null,
 };
 
-const user = (state = initialState, { type, payload }) => {
+export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case "SIGNUP_SUCCESS": {
-      return { ...state, jwt: payload };
-    }
-    default: {
+    default:
       return state;
-    }
   }
 };
-export default user;
+
