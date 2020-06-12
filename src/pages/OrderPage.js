@@ -1,46 +1,70 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectOrder } from "../store/orders/selector";
 import { selectAllProducts } from "../store/products/selector";
 import { fetchOrder } from "../store/orders/actions";
 import { useParams } from "react-router-dom";
 import ShoppingCartList from "../components/ShoppingCartList";
+import "../components/ShoppingCart.List.css";
 
 export default function OrderPage() {
+  const [products, set_products] = useState();
+  const [loading, set_loading] = useState("Idle");
   const order = useSelector(selectOrder);
   const allProducts = useSelector(selectAllProducts);
+  const dispatch = useDispatch();
+  const { id } = useParams();
 
-  console.log("What are my products", allProducts.products);
+  //   console.log("What are my products", allProducts.products);
   //   console.log("is my order.id true", !!order.orderId);
   //   console.log("What are my products", allProducts);
 
   function getProductDetails() {
-    const products = order.productIds.map((cartProductId) => {
+    const productDetails = order.productIds.map((cartProductId) => {
       return allProducts.products.find((allProducts) => {
-        console.log(
-          `does ${allProducts.id} match ${cartProductId}?`,
-          parseInt(allProducts.id) === parseInt(cartProductId)
-        );
-        return allProducts.id === cartProductId;
+        return parseInt(allProducts.id) === parseInt(cartProductId);
       });
     });
-    console.log("What are my product details", products);
+    set_products(productDetails);
+    set_loading("Done");
   }
 
-  if (order.orderId) {
+  function shoppingCartListRender() {
+    return (
+      <table>
+        <tbody>
+          <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Price</th>
+          </tr>
+          {console.log("Which product", products)}
+          {products.map((product, i) => {
+            return (
+              <tr key={i}>
+                <ShoppingCartList
+                  name={product.name}
+                  description={product.description}
+                  price={product.price}
+                />
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    );
+  }
+  useEffect(() => {
+    set_loading("Loading");
     getProductDetails();
-  }
-
-  const dispatch = useDispatch();
-  const { id } = useParams();
-
-  //   useEffect(() => {
-  //     dispatch(fetchOrder);
-  // }, [dispatch]);
+  }, []);
+  console.log("loading status", loading);
+  if (loading === "loading" || loading === "Idle")
+    return <h1>Your cart is empty</h1>;
   return (
     <div>
       <h1>Your shopping cart</h1>
-      <ShoppingCartList />
+      {shoppingCartListRender()}
     </div>
   );
 }
