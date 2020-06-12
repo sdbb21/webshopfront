@@ -14,10 +14,10 @@ function App() {
       <NavBar />
       <Switch>
         {/* more pages to be added here later */}
-        <Route path="/login" component={AuthPage} />
+        {/* <Route path="/login" component={AuthPage} /> */}
         <Route path="/order/cart" component={OrderPage} />
-        <Route component={HomePage} />
-      </Switch>{" "}
+        {/* <Route path="/" component={HomePage} /> */}
+      </Switch>
     </div>
   );
 }
