@@ -1,4 +1,4 @@
-
+const initialState = {
   userId: null,
   firstName: null,
   lastName: null,
@@ -13,4 +13,3 @@ export default (state = initialState, { type, payload }) => {
       return state;
   }
 };
-
