@@ -10,21 +10,17 @@ export default function UserPage() {
   const [lastName, setLastName] = useState();
   const [address, setAddress] = useState();
   const [phone, setPhone] = useState();
+  const [message, setmessage] = useState();
   const dispatch = useDispatch();
 
   function handleSignup(event) {
     event.preventDefault();
-    // console.log(
-    //   "in handle",
-    //   email,
-    //   password,
-    //   firstName,
-    //   lastName,
-    //   address,
-    //   phone
-    // );
-
-    dispatch(signup(email, password, firstName, lastName, address, phone));
+    if (!password || !email || !firstName || !lastName || !address || !phone) {
+      alert("You must fill in all of the fields.");
+    } else {
+      setmessage(!message);
+      dispatch(signup(email, password, firstName, lastName, address, phone));
+    }
   }
 
   return (
@@ -87,6 +83,11 @@ export default function UserPage() {
         </p>
 
         <button className="submitButton">Submit</button>
+        {!message ? (
+          <div></div>
+        ) : (
+          <p style={{ padding: "50px" }}>You are registered!.</p>
+        )}
       </form>
     </div>
   );
